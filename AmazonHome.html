@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./style.css">
+  <script src="https://kit.fontawesome.com/06489297db.js" crossorigin="anonymous"></script>
+  <title>Amazon Home</title>
+  <style>
+    * {
+      margin: 0%;
+      padding: 0%;
+      box-sizing: border-box;
+    }
+
+    #screen {
+      width: 100%;
+      border: 1px solid red;
+    }
+
+    #nav-div {
+      width: 100%;
+      height: 120px;
+    }
+
+    #nav-top {
+      background-color: #131921;
+      height: 65%;
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      color: white;
+    }
+
+    #nav-down {
+      background-color: #232f3e;
+      width: 100%;
+      height: 35%;
+    }
+
+    #nav1 {
+      height: 80%;
+      width: 150px;
+      /* border: 2px solid white; */
+      background-color: #131921;
+    }
+
+    #nav1>img {
+      height: 100%;
+      width: 150px;
+    }
+
+    #nav2 {
+      line-height: 10px;
+
+    }
+
+    #nav3 {
+      height: 65%;
+      width: 40%;
+      display: flex;
+      border: 1px solid white;
+      font-size: 22px;
+    }
+
+    #nav3>div {
+      height: 100%;
+      width: 10%;
+      background-color: #f3f3f3;
+      color: #232f3e;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    #nav3>input {
+      height: 100%;
+      width: 80%;
+      font-size: 20px;
+    }
+
+    #nav3>i {
+      background-color: #febd69;
+      height: 100%;
+      width: 10%;
+      color: #131921;
+      font-size: 25px;
+      align-items: center;
+      display: flex;
+      justify-content: center;
+    }
+
+    #body {
+      border: 1px solid green;
+      display: flex;
+    }
+
+    #Dproduct {
+      width: 100%;
+      border: 1px solid green;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+    #Dproduct1{
+      border: 1px solid red;
+      width: 30%;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="screen">
+    <div id="nav-div">
+      <div id="nav-top">
+        <div id="nav1">
+          <img
+            src="https://i0.wp.com/www.dafontfree.co/wp-content/uploads/2021/11/Amazon-Logo-Font-1-scaled.jpg?resize=2560%2C1578"
+            alt="amzon image">
+        </div>
+        <div id="nav2">
+          <h3>Hello</h3><br>
+          <p> <i class="fa-solid fa-location-dot"></i> select your address</p>
+        </div>
+        <div id="nav3">
+          <div>All <i class="fa-solid fa-caret-down"></i></div>
+          <input type="text" placeholder="search amazon.in">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+        <div>
+          <div id="UserName">
+
+          </div>
+
+        </div>
+      </div>
+      <div id="nav-down"></div>
+    </div>
+
+    <div id="body">
+      <div id="Dproduct"></div>
+    </div>
+  </div>
+
+  <script>
+    window.onload = function () {
+     
+     
+      
+
+      var T_localData = JSON.parse(localStorage.getItem("ProductData"));
+      var divFromHtml = document.getElementById("Dproduct");
+      var displayDiv = [];
+
+      for (var i = 0; i < T_localData.length; i++) {
+
+        displayDiv += `
+          <div id="Dproduct1" >
+            <h3> ${T_localData[i].productName}</h3>
+           <img src="${T_localData[i].productImage}" alt="">
+           <p>${T_localData[i].productDiscription}</p>
+           <h3>${T_localData[i].productPrice}</h3>
+           <button>add to cart</button>
+          </div>
+            `
+      }
+
+      divFromHtml.innerHTML = displayDiv;
+    }
+  </script>
+</body>
+
+</html>
